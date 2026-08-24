@@ -13,7 +13,7 @@ class _LoadingScreenState extends State<LoadingScreen>{
   void initState(){
     super.initState();
     Timer(
-        Duration(seconds: 2),
+        Duration(seconds: 10),
             (){Navigator.pushReplacement(
               context,
               MaterialPageRoute(
