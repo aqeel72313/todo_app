@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-void main () {
-  runApp(const HomeScreen());
-}
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
-
-  VoidCallback? get onPressed => null;
-
+@override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+class _HomeScreenState extends State<HomeScreen> {
+  List<String> task = [];
+  TextEditingController taskController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,70 +17,75 @@ class HomeScreen extends StatelessWidget {
       body: Center(
         // Main Container
 
-      child: Container(
-        width: 400,
-        height: 300,
-        margin: EdgeInsets.all(10),
-        decoration: BoxDecoration(
-          color: const Color(0xFFAFE3F4),
-          borderRadius: BorderRadius.circular(20),
-          boxShadow: [BoxShadow(
-            color: Color(0xFFBCBCBC),
-            spreadRadius: 2,
-            blurRadius: 15,
-          ),
-        ],
-        ),
-        child: Padding(
-          padding: EdgeInsets.symmetric(
-            horizontal: 15,
-          ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-                "What's you want to do?",
-              style: TextStyle(
-                color: Colors.black87,
-                fontSize: 25,
-                fontWeight: FontWeight.bold
-              ),
-            ),
-            SizedBox(height: 10,),
-            // Text Field
-
-            TextField(
-               decoration: InputDecoration(
-                 prefixIcon: Icon(Icons.add_task),
-                 hintText: "Enter your task...",
-                 filled: true,
-                 fillColor: Colors.white,
-                 border: OutlineInputBorder(
-                   borderRadius: BorderRadius.circular(16),
-                 )
-               ),
-              ),
-            SizedBox(height: 15,),
-
-            // Elevated Button
-
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                minimumSize: const Size(370, 50),
-                backgroundColor: Color(0xFF92E1FF),
-              ),
-              onPressed: () {},
-              child:Text(
-                  "Save",
-                style: TextStyle(
-                  color: Colors.black87,
-                  fontSize: 24,
-                ),
-              ),
+        child: Container(
+          width: 400,
+          height: 300,
+          margin: EdgeInsets.all(10),
+          decoration: BoxDecoration(
+            color: const Color(0xFFAFE3F4),
+            borderRadius: BorderRadius.circular(20),
+            boxShadow: [BoxShadow(
+              color: Color(0xFFBCBCBC),
+              spreadRadius: 2,
+              blurRadius: 15,
             ),
             ],
           ),
+          child: Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: 15,
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "What's you want to do?",
+                  style: TextStyle(
+                      color: Colors.black87,
+                      fontSize: 25,
+                      fontWeight: FontWeight.bold
+                  ),
+                ),
+                SizedBox(height: 10,),
+                // Text Field
+
+                TextField(
+                  controller: taskController,
+                  decoration: InputDecoration(
+                      prefixIcon: Icon(Icons.add_task),
+                      hintText: "Enter your task...",
+                      filled: true,
+                      fillColor: Colors.white,
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(16),
+                      )
+                  ),
+                ),
+                SizedBox(height: 15,),
+
+                // Elevated Button
+
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    minimumSize: const Size(370, 50),
+                    backgroundColor: Color(0xFF92E1FF),
+                  ),
+                  onPressed: () {
+                    setState(() {
+                      task.add(taskController.text);
+                    });
+                  },
+                  child: Text(
+                    "Save",
+                    style: TextStyle(
+                      color: Colors.black87,
+                      fontSize: 24,
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
