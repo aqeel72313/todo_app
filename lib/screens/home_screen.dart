@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todo_app/screens/tasks_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -78,6 +79,28 @@ class _HomeScreenState extends State<HomeScreen> {
                   },
                   child: Text(
                     "Save",
+                    style: TextStyle(
+                      color: Colors.black87,
+                      fontSize: 24,
+                    ),
+                  ),
+                ),
+                SizedBox(height: 15,),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    minimumSize: const Size(370, 50),
+                    backgroundColor: Color(0xFF92E1FF),
+                  ),
+                  onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => TasksScreen(task: task),
+                        )
+                      );
+                  },
+                  child: Text(
+                    "View Tasks",
                     style: TextStyle(
                       color: Colors.black87,
                       fontSize: 24,
