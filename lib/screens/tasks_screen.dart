@@ -23,7 +23,14 @@ class _TasksScreen extends State<TasksScreen> {
             itemCount: widget.task.length,
             itemBuilder: (context, index) {
               return ListTile(
-                leading: Checkbox(value: true, onChanged: ),
+                leading: Checkbox(
+                    value: widget.task[index]["completed"],
+                    onChanged: (value) {
+                      setState(() {
+                        widget.task[index]["completed"] = value;
+                      });
+                   },
+                ),
                 title: Text(widget.task[index]["title"]),
                 trailing: IconButton(
                   onPressed: () {
