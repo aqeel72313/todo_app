@@ -7,7 +7,7 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 class _HomeScreenState extends State<HomeScreen> {
-  List<String> task = [];
+  List<Map<String, dynamic>> task = [];
   TextEditingController taskController = TextEditingController();
   @override
   Widget build(BuildContext context) {
@@ -74,7 +74,10 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   onPressed: () {
                     setState(() {
-                      task.add(taskController.text);
+                      task.add({
+                        "title": taskController.text,
+                        "completed": false,
+                      });
                     });
                   },
                   child: Text(

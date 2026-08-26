@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class TasksScreen extends StatefulWidget {
-  final List<String> task;
+  final List<Map<String, dynamic>> task;
 
   const TasksScreen({
     super.key,
@@ -23,7 +23,8 @@ class _TasksScreen extends State<TasksScreen> {
             itemCount: widget.task.length,
             itemBuilder: (context, index) {
               return ListTile(
-                title: Text(widget.task[index]),
+                leading: Checkbox(value: true, onChanged: ),
+                title: Text(widget.task[index]["title"]),
                 trailing: IconButton(
                   onPressed: () {
                     setState(() {
