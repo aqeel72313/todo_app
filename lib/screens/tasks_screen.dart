@@ -31,7 +31,13 @@ class _TasksScreen extends State<TasksScreen> {
                       });
                    },
                 ),
-                title: Text(widget.task[index]["title"]),
+                title: Text(
+                    widget.task[index]["title"],
+                style: TextStyle(
+                  decoration:
+                  (widget.task[index]["completed"])? TextDecoration.lineThrough : TextDecoration.none
+                ),
+                ),
                 trailing: IconButton(
                   onPressed: () {
                     setState(() {
