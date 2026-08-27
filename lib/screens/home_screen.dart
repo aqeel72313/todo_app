@@ -74,11 +74,14 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   onPressed: () {
                     setState(() {
-                      task.add({
-                        "title": taskController.text,
-                        "completed": false,
-                      });
+                      if(taskController.text.isNotEmpty){
+                        task.add({
+                          "title": taskController.text,
+                          "completed": false,
+                            });
+                      }
                     });
+                    taskController.clear();
                   },
                   child: Text(
                     "Save",
