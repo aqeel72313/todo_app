@@ -92,6 +92,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
                 SizedBox(height: 15,),
+
+                // View Task Button
+
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     minimumSize: const Size(370, 50),
@@ -119,5 +122,10 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
     );
+  }
+  @override
+  void dispose(){
+    taskController.dispose();
+    super.dispose();
   }
 }

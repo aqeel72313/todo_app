@@ -12,6 +12,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: LoadingScreen()
+
+
+        // Encode = Dart data → JSON String
+        // Decode = JSON String → Dart data
     );
   }
 }
