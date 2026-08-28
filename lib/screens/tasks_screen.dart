@@ -18,8 +18,17 @@ class _TasksScreen extends State<TasksScreen> {
       appBar: AppBar(
         title: Text("My Tasks"),
       ),
-      body: Center(
-        child: ListView.builder(
+      body: widget.task.isEmpty?
+      Center(
+        child: Text(
+            "No tasks yet!",
+        style: TextStyle(
+          fontSize: 24,
+          fontWeight: FontWeight.bold,
+        ),
+        ),
+      )
+        : ListView.builder(
             itemCount: widget.task.length,
             itemBuilder: (context, index) {
               return ListTile(
@@ -47,8 +56,7 @@ class _TasksScreen extends State<TasksScreen> {
                   icon: Icon(Icons.delete),
                 ),
               );
-            }),
-      ),
+          }),
     );
   }
 }

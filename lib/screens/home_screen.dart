@@ -23,6 +23,16 @@ class _HomeScreenState extends State<HomeScreen> {
   Future<void> loadTasks() async {
     final prefs = await SharedPreferences.getInstance();
     final data = prefs.getString("task");
+    if (data != null){
+      setState(() {
+        task = List<Map<String, dynamic>>.from(jsonDecode(data));
+      });
+    }
+  }
+  @override
+  void initState() {
+    super.initState();
+    loadTasks();
   }
   @override
   Widget build(BuildContext context) {
@@ -88,16 +98,16 @@ class _HomeScreenState extends State<HomeScreen> {
                     backgroundColor: Color(0xFF92E1FF),
                   ),
                   onPressed: () {
-                    setState(() {
-                      if(taskController.text.isNotEmpty){
+                    if(taskController.text.isNotEmpty) {
+                      setState(() {
                         task.add({
                           "title": taskController.text,
                           "completed": false,
-                            });
-                      }
-                    });
-                    saveTasks();
-                    taskController.clear();
+                        });
+                      });
+                      saveTasks();
+                      taskController.clear();
+                    }
                   },
                   child: Text(
                     "Save",
