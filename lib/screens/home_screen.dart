@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:todo_app/screens/tasks_screen.dart';
+// accessing local storage
 import 'package:shared_preferences/shared_preferences.dart';
+// Encoding into string bcz the json can't accept list type data
 import 'dart:convert';
 
 class HomeScreen extends StatefulWidget {
@@ -13,6 +15,14 @@ class _HomeScreenState extends State<HomeScreen> {
   TextEditingController taskController = TextEditingController();
   Future<void> saveTasks() async{
     final prefs = await SharedPreferences.getInstance();
+    await prefs.setString(
+      "task",
+          jsonEncode(task)
+    );
+  }
+  Future<void> loadTasks() async {
+    final prefs = await SharedPreferences.getInstance();
+    final data = prefs.getString("task");
   }
   @override
   Widget build(BuildContext context) {
@@ -86,6 +96,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             });
                       }
                     });
+                    saveTasks();
                     taskController.clear();
                   },
                   child: Text(
