@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:todo_app/screens/tasks_screen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'dart:convert';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -9,6 +11,9 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   List<Map<String, dynamic>> task = [];
   TextEditingController taskController = TextEditingController();
+  Future<void> saveTasks() async{
+    final prefs = await SharedPreferences.getInstance();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
